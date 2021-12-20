@@ -1,0 +1,64 @@
+{% extends 'Base.html'%} {% block main %}
+<div class="container" style="flex-direction: column; padding: 10px;">
+  <h3 style="color: blue;">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="30px"
+      width="30px"
+      fill="currentColor"
+      class="bi bi-search"
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+      /></svg
+    >Find Your Friends
+  </h3>
+  <form method="post" action="search">
+    {% csrf_token %}
+    <input
+      class="form-control"
+      style="margin: 5px;"
+      type="search"
+      id="serach_text"
+      name="search_text"
+    />
+    <input
+      class="btn btn-primary"
+      style="margin: 5px;"
+      type="submit"
+      value="search"
+    />
+  </form>
+  <br />
+  <div style="width: inherit; padding: 5px;">
+    <ul>
+      <!-- For loop t show all the metching results -->
+      {% for f in search_result %} {% if f.username not in friends %}
+
+      <li>
+        <div class="row">
+          <div class="col">
+            <h4>{{f.first_name}} {{f.last_name}}</h4>
+            <h6>{{f.username}}</h6>
+          </div>
+
+          <div class="col" align="right">
+            <input
+              class="btn btn-primary"
+              value="follow"
+              id="follow"
+              type="submit"
+              name="{{f.username}}"
+              username="{{user.username}}"
+              onclick="addfollowers(this)"
+            />
+          </div>
+        </div>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

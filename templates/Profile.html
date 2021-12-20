@@ -1,0 +1,32 @@
+{% extends 'Base.html'%}{% block main %}
+<center>
+  <div class="profile_pic_container shadow">
+    <img
+      class="profile_pic_css profile_items"
+      style="height: 30vh; width: 15vw;"
+      src="{{profile_pic}}"
+    />
+    <font class="profile_items" size="5px"
+      ><b>{{first_name}} {{last_name}}</b></font
+    >
+    <font class="profile_items">{{username}}</font>
+    <font class="profile_items">{{email}}</font>
+    <font class="profile_items">{{DOB}}</font>
+    <form>
+      <input
+        class="btn btn-primary profile_items"
+        type="submit"
+        value="Edit profile"
+      />
+    </form>
+    <form action="uploadPost">
+      <input
+        type="submit"
+        class="btn btn-primary profile_items"
+        value="upload a post"
+      />
+    </form>
+  </div>
+</center>
+
+{% endblock %}

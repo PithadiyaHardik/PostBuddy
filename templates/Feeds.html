@@ -1,0 +1,22 @@
+{%extends 'Base.html'%} {% block main%}
+
+<div class="container" style="flex-direction: column; top: 0vh;">
+  {% for p in feeds %}
+  <div class="card" style="margin: 20px;">
+    <h5 clas="card-header" style="text-align: left;">
+      <img
+        src="static/default_profile.png"
+        style="height: 25px; width: 25px;"
+      />{{p.owner_username}}
+    </h5>
+    <img src="{{p.post_image.url}}" class="card-img-top" alt="..." style="height:300px;width:400px;" />
+    <div class="card-body">
+      <p class="card-text" style="text-align: left;">
+        {{p.captions}}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'Base.html' %} {% block main %}
+<center>
+  <div class="container" style="flex-direction: column;top:0">
+    {% for p in post %}
+    <!-- <p>{{p.owner_username}}</p>
+    <img
+      src="{{p.post_image.url}}"
+      style="height: 40vh; width: 40vw;"
+      loading="lazy"
+      onload="console.log('loaded')"
+    />
+    <font>{{p.captions}}</font> -->
+    <div class="card" style="padding:auto;margin:25px;">
+      <h5 clas="card-header" style="text-align: left;">
+        <img
+          src="static/default_profile.png"
+          style="height: 22px; width: 22px;"
+        />{{p.owner_username}}
+      </h5>
+      <img src="{{p.post_image.url}}" class="card-img-top" alt="..." style="height:300px;width:500px"/>
+      <div class="card-body">
+        <p class="card-text" style="text-align: left;">
+          {{p.captions}}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</center>
+{% endblock %}

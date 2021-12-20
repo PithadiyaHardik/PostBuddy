@@ -1,0 +1,130 @@
+{% extends 'Base.html' %} {% block main %}
+
+<div class="container shadow">
+  <form method="POST" action="register" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="column">
+        <input
+        required
+          style="display: none;"
+          type="file"
+          name="profilePic"
+          accept=".jpg"
+          id="profilePic"
+          class="form-control profile-pic"
+          onchange="showImage(this)"
+        />
+      </div>
+
+      <div class="column">
+        <label for="profilePic">
+          <img
+            id="profile_pic_image"
+            class="profile_pic"
+            src="static/default_profile.png"
+            height="100px"
+            width="100px"
+        /></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input
+          required
+          id="firstName"
+          name="firstName"
+          type="text"
+          class="form-control register_items"
+          placeholder="First Name"
+        />
+      </div>
+
+      <div class="col">
+        <input
+          type="text"
+          required
+          class="form-control register_items"
+          id="middleName"
+          name="middleName"
+          placeholder="Middle Name"
+        />
+      </div>
+      <div class="col">
+        <input
+          required
+          type="text"
+          id="lastName"
+          name="lastName"
+          class="form-control register_items"
+          placeholder="Last Name"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input
+          required
+          type="email"
+          id="email"
+          name="email"
+          class="form-control register_items"
+          placeholder="Email"
+        />
+      </div>
+      <div class="col">
+        <input
+          required
+          id="DOB"
+          name="DOB"
+          type="date"
+          class="form-control register_items"
+          placeholder="D.O.B"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input
+          id="username"
+          name="username"
+          required
+          type="text"
+          class="form-control register_items"
+          placeholder="username"
+        />
+      </div>
+      <div class="col">
+        <input
+          required
+          name="password"
+          id="password"
+          type="password"
+          class="form-control register_items"
+          placeholder="Password"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input
+          type="submit"
+          style="width: 100%;"
+          class="btn btn-primary from-control"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="reset"
+          style="width: 100%;"
+          class="btn btn-danger from-control"
+        />
+      </div>
+    </div>
+    <div class="row" style="padding:5px;text-align:center;color:red">
+        {{error}}
+    </div>
+  </form>
+</div>
+
+{% endblock %}
